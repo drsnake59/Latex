@@ -1,0 +1,80 @@
+\documentclass[11pt,t]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usetheme{Madrid}
+
+\begin{document}
+	\author[T. Bocquelet]{Thomas \bsc{Bocquelet}}
+	\title{Programmer en Java}
+	\subtitle{Programmation Orientée Objet}
+	\logo{\includegraphics[width=45pt]{images/logoulco.pdf}}
+	%\institute{}
+	%\date{}
+	%\subject{}
+	%\setbeamercovered{transparent}
+	%\setbeamertemplate{footline}[frame number]
+	\setbeamertemplate{navigation symbols}{}
+	
+	\subject{java}
+	\keywords{java, programmation, orientée, objet}
+	
+	\AtBeginSection{
+		\begin{frame}
+			\frametitle{Plan du cours}
+			\tableofcontents[currentsection, hideothersubsections]
+		\end{frame}
+	}
+
+	\AtBeginSubsection{
+		\begin{frame}
+			\frametitle{Plan du cours}
+			\tableofcontents[currentsubsection]
+		\end{frame}
+	}
+
+	\lstset{aboveskip=1ex, language=Java, basicstyle=\ttfamily, breaklines, keywordstyle=\color{blue}, commentstyle=\color{gray}\itshape, stringstyle=\color{orange}}
+	
+	\newenvironment<>{remarque}{
+		\setbeamercolor{block title}{bg=orange}
+		\begin{block}{Remarque}
+			
+	}
+	{
+		\end{block}
+	}
+
+	\newenvironment<>{syntaxe}{
+		\setbeamercolor{block title}{bg=cyan}
+		\begin{block}{Syntaxe}
+			
+		}
+		{
+		\end{block}
+	}
+	
+	\begin{frame}[plain]
+		\maketitle
+		\begin{abstract}
+			Document réalisé à partir du cours de M\up{r} Grégory \bsc{Bourgin}: bourguin@lisic.univ-littoral.fr
+		\end{abstract}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Plan du cours}
+		\tableofcontents
+	\end{frame}
+
+	\include{sections/presentation}
+	
+%	\include{sections/elementslangage}
+	
+	\include{sections/supplements}
+
+
+\end{document}

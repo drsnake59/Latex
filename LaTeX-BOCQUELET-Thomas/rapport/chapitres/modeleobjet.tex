@@ -1,0 +1,355 @@
+\chapter{Le modèle objet}
+
+	A ce stade, nous pouvons constater que:
+	\begin{itemize}
+		\item La complexité des projets est revue à la hausse
+		\item Il y a un réel besoin de gain de productivité
+	\end{itemize}
+	Nous devons alors nous préparer pour que le projet soit modulable et résistant aux modifications, réutilisable, lisible et compréhensible.
+	La solution à cela est l'\emph{objet}.
+	
+	\begin{definition}
+		Un objet est constitué de \emph{données}. Ses données sont stockées dans les \emph{attributs} de l'objet.
+	\end{definition}
+
+	\begin{exemple}
+		Un rectangle possède deux attributs: sa longueur et sa hauteur.
+	\end{exemple}
+
+	\begin{definition}
+		Un objet manipule ses données pour effectuer des \emph{opérations}. Les opérations d'un objet sont réalisées par l'exécution des \emph{méthodes} correspondantes.
+	\end{definition}
+
+	\begin{exemple}
+		Un rectangle peut se dessiner, se déplacer, se redimensionner, etc...
+	\end{exemple}
+
+	\begin{definition}[Classe]
+		La structure des \emph{attributs} et des \emph{méthodes} d'un objet sont décrits dans sa \emph{classe}.
+	\end{definition}
+	
+	
+	\section{Les classes}
+	
+		Une classe décrit un modèle de données (les \emph{attributs}) et de comportement (les \emph{méthodes}).
+		\begin{itemize}
+			\item Les attributs et méthodes décrits dans une classe sont appelés les \emph{membres}.
+			\item Une classe peut être vue comme le moyen de décrire de nombreux objets.
+			\begin{description}
+				\item[Chat:] décrit les entités à 4 pattes, 1 queue, et sachant miauler
+				\item[Voiture:] décrit les entités ayant des portes, des roues et sachant rouler
+			\end{description}
+		\end{itemize}
+	
+		Tout objet est l'\emph{instance} d'une classe: instancié (créé) à partir du modèle décrit dans sa classe, cet objet possède les mêmes attributs et les mêmes opérations que les autres instances issues de la même classe.
+		
+		\begin{exemple}
+			Exemples d'instances de classes:
+			\begin{description}
+				\item[Chat:] Garfield, Félix, etc...
+				\item[Jeu:] Overwatch, World of Warcraft, PUBG, StarCraft II
+				\item[PresidentRepublique:] Emmanuel \bsc{Macron}, François \bsc{Hollande}, Nicolas \bsc{Sarkozy}
+			\end{description}
+		\end{exemple}
+	
+		\subsection{Fonctionnement et structure}
+		
+		Du point de vue de l'informaticien:
+		\begin{itemize}
+			\item Les classes correspondent au programme
+			\begin{itemize}
+				\item description des structures de données (liste, nom, type des attributs)
+				\item description des opérations (liste, nom et algorithme des méthodes)
+			\end{itemize}
+			\item L'informaticien écrit des programmes, donc des classes
+			\item Chaque instance s'exécute conformément à sa classe
+			\item On peut créer de nombreuses instances à partir de la même classe
+			\item L'exécution d'un programme orienté objet correspond à un ensemble d'objets qui interagissent entre eux
+		\end{itemize}
+	
+			\subsubsection{Déclaration}
+	
+				Une classe se définit de la manière suivante:
+				\lstinputlisting{code/codeClasse.java}
+				
+				\begin{exemple}
+					Exemple d'une classe \lstinline|Circle|:
+					\lstinputlisting{code/exempleClasse.java}
+				\end{exemple}
+			
+			\subsubsection{Instanciation}
+			
+				La création d'un objet implique que celui doit être \emph{instancié} à l'aide de l'opérateur \lstinline|new|.
+				Grâce à cet opérateur, une nouvelle \emph{instance} de cette classe est allouée en mémoire: il est alors possible de l'utiliser dans notre programme.
+				
+				\begin{exemple}
+					Reprenons l'exemple de notre classe \lstinline|Circle|:
+					\lstinputlisting{code/instanciationCircle.java}
+				\end{exemple}
+		
+		\subsection{Les constructeurs}
+		
+			\begin{definition}
+				Un \emph{constructeur} est une méthode de la classe qui a pour objectif d'initialiser l'objet en cours de création. Celui porte le nom de la classe et en retourne une instance. Il est déclenché par l'instruction \lstinline|new|.	
+			\end{definition}
+		
+			Toutes les classes possèdent par défaut un constructeur sans paramètres. Cependant, il peut être redéfini.
+			
+			La syntaxe pour définir un constructeur est la suivante: \lstinline|nomClasse();|.
+			
+			\begin{remarque}
+				Une classe peut avoir plusieurs constructeurs. Le choix du constructeur sera effectué en fonction du nombre de paramètres renseignés.
+			\end{remarque}
+		
+			\begin{exemple}
+				On suppose une classe \lstinline|Droite| dans laquelle on souhaite définir 2 constructeurs: un par défaut, et l'autre avec des paramètres qui devront être renseignés lors de son appel.
+				\lstinputlisting{code/constructeurs.java}
+			\end{exemple}
+			
+		
+		\subsection{Constructeur par recopie}
+		
+			Le \emph{constructeur par recopie}, comme son nom l'indique, permet de créer un nouvel objet avec les valeurs d'un autre objet \textbf{de la même classe}.
+			Celui-ci prendra en paramètre l'objet à copier.
+			
+			\begin{exemple}
+				On souhaite créer un \lstinline|Carre| à partir d'un autre déjà existant.
+				La classe sera alors définie de cette manière:
+				\lstinputlisting{code/constructeurrecopie.java}
+				
+				Afin d'effectuer une copie d'un carré nommé \lstinline|c1|, nous devrons appeler le constructeur par recopie de la manière suivante:
+				\lstinputlisting{code/constructeurrecopie2.java}
+				
+			\end{exemple}
+		
+	\section{Packages}
+	
+		Un package en \lang{} regroupe un ensemble de classes sous un même \emph{espace de nommage}.
+		Point de vue de la compilation, le mot clé \lstinline|package| permet d'indiquer à quel package appartient la ou les classe(s) de l'unité de compilation (le fichier).
+		
+		\attention{\lstinline|package| doit être la première instruction de chaque fichier.}
+		
+		Les noms des packages suivent le schéma: \lstinline|name.subname|.
+		
+		\begin{exemple}
+			\lstinline|java.util|
+		\end{exemple}
+	
+		Si on souhaite utiliser des méthodes définies dans d'autres packages, il est nécessaire de: soit
+		\begin{itemize}
+			\item importer le package dans le fichier
+			\item préfixer le nom de la classe (définie dans un autre fichier) par son nom de package
+		\end{itemize}
+	
+		\begin{remarque}
+			Vous pourrez remarquer que préfixer le nom de la classe par le nom du package peut être très long et fastidieux si le projet réalisé comporte beaucoup de fichiers. C'est la raison pour laquelle on privilégiera l'importation des packages.
+		\end{remarque}
+		
+		\begin{exemple}[Importation du package] On importe les fichiers \nomfichier{human.java} et \nomfichier{monster.java} qui se trouvent dans le dossier \lstinline|game/characters|
+			\lstinputlisting{code/importationPackage.java}
+		\end{exemple}
+	
+		\begin{exemple}[Classe préfixée du nom de package] On considère dans cet exemple que l'on souhaite créer un vecteur, qui a un constructeur déjà implémenté dans les fichiers du JDK. Il s'agit du package \lstinline|java.util.Vector|:
+			\lstinputlisting{code/packageendur.java}
+		\end{exemple}
+	
+		Il existe un \og raccourci\fg{} permettant d'utiliser toutes les classes se trouvant dans un même package.
+		\begin{exemple}
+			On souhaite importer toutes les classes se trouvant dans le package \lstinline|java.util|. La ligne de code sera la suivante:
+			\lstinputlisting{code/importationtoutesclasses.java}
+		\end{exemple}
+	
+		\attention{Seules les classes \emph{publiques} d'un package sont utilisables dans un autre package !}
+		
+		Exemple de programme mettant en évidence ce système: \reffigure{fig:programmepackages}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1.0\linewidth]{images/programmepackages}
+			\caption[Utilisation méthodes et variables d'autres packages]{Exemple d'un programme utilisant des méthodes et variables d'autres packages}
+			\label{fig:programmepackages}
+		\end{figure}
+		
+	
+	\section{Accès aux membres}
+	
+		Comme dans d'autres langages (C++, etc...), la visibilité des membres (attributs, méthodes) est définie au niveau de la classe:
+		\begin{description}
+			\item[Inaccessible hors de l'objet:] \lstinline|private|
+			\item[Inaccessible hors de la hiérarchie des classes:] \lstinline|protected|
+			\item[Inaccessible en dehors du package:] \lstinline|friendly|
+			\item[Accessibilité totale:] \lstinline|public| 
+		\end{description}
+	
+		Dans la majeure partie des cas, on essaiera toujours de limiter l'accès un minimum. \reffigure{fig:accesmembres}
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=1.0\linewidth]{images/accesmembres}
+			\caption[Utilisation attributs et méthodes d'autres classes]{Exemple d'un programme utilisant des attributs et méthodes d'autres classes}
+			\label{fig:accesmembres}
+		\end{figure}
+	
+		\subsection{Getters et setters}
+		
+			Afin de simplifier et clarifier le programme principal ou les méthodes de chaque classe, nous pouvons implémenter des \emph{getters} et des \emph{setters}. Ils permettront, respectivement, de récupérer ou modifier une valeur d'un attribut de la classe.
+			Il sera nécessaire d'utiliser l'\emph{encapsulation} pour contrôler les accès.
+			
+			\begin{exemple}[Getters et Setters]
+				Exemple d'un programme dans lequel des getters et setters ont été implémentés, et utilisés dans les méthodes:
+				\lstinputlisting{code/getterssetters.java}
+			\end{exemple}
+		
+			\begin{remarque}
+				Le mot clé \lstinline|this| est utilisé par un objet pour se référencer lui-même.
+			\end{remarque}
+		
+		\subsection{Encapsulation}
+		
+			Encapsuler les données permet de :
+			\begin{itemize}
+				\item les protéger des accès intempestifs
+				\item déclencher des actions spécifiques lorsqu'on y accède
+			\end{itemize}
+		
+		\subsection{Identité}
+		
+			Chaque objet instancié peut avoir les mêmes valeurs dans leurs attributs ainsi que les mêmes méthodes. Ils ne se confondent pas avec les autres similaires.
+			
+			\begin{exemple}
+				Deux voitures de la même marque, le même modèle, les mêmes options et les mêmes jantes ne se confondent pas. Elles représentent deux entités identiques.
+			\end{exemple}
+		
+			Réciproquement, les valeurs contenues dans les attributs de chaque objet peuvent changer. L'objet ne changera pas l'\emph{identité}.
+			
+			\begin{exemple}
+				Une voiture repeinte ou avec des options ajoutées (après sa conception).
+			\end{exemple}
+		
+			Le langage orienté objet fournit un moyen de désigner un objet en tant qu'élément unique.
+			Une variable de type objet (ex: \lstinline|Voiture v|) contient une \emph{référence} ou \emph{\lstinline|null|}.
+			
+			\attention{Il est important de noter que chaque variable de type objet pointe vers un objet. Si cet objet a pour contenu \lstinline|null|, alors la variable ne pourra pas être utilisée. Sinon, vous aurez des erreurs de compilation !}
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=1.0\linewidth]{images/pointeurnull}
+				\caption{Erreurs de compilation à cause d'un objet ayant pour valeur \lstinline|null|}
+				\label{fig:pointeurnull}
+			\end{figure}
+		
+	\section{\lstinline|static|}
+	
+		\textbf{Proposition:}
+		Les classes sont des \emph{modèles} \refexemple{classesmodeles}, mais chaque modèle n'est pas une instance \refexemple{modelesinstances}.
+		\begin{exemple}[Modèle]
+			\label{classesmodeles}Un document papier contenant un plan pour créer un certain modèle des \og Twingo\fg{}.
+		\end{exemple}
+	
+	\begin{exemple}[Instance]
+		\label{modelesinstances}Le papier contenant le plan n'est pas une \og Twingo\fg{}.
+	\end{exemple}
+
+	Le modèle a ses propres attributs, qui n'ont aucun rapport avec les objets.
+	
+	\begin{exemple}
+		Le papier contenant le plan peut avoir une couleur: \lstinline|static Couleur couleur;|
+		Cette couleur n'est pas celle de la voiture.
+		Ce modèle peut aussi avoir comme méthode: \lstinline|static plier();|.
+	\end{exemple}
+
+	Exemple d'une classe \lstinline|Etudiant|:
+	\lstinputlisting{code/staticclasse.java}
+	
+	Programme principal:
+	\lstinputlisting{code/staticprincipal.java}
+			
+	\section{Héritage}
+	
+		L'\emph{héritage} est la technique la plus utilisée pour réaliser la généralisation ou la spécialisation.
+	
+		\subsection{Principe}
+		
+			Créer des \emph{sous-classes} permet d'utiliser les attributs, des méthodes et des contraintes de la classe dont elle dépend. On parle alors d'\emph{héritage}.
+			\begin{remarque}
+				Il est possible de créer des attributs et d'autres méthodes dans les sous-classes, mais ils ne seront pas utilisables plus haut dans la hiérarchie.
+			\end{remarque}
+		
+			\begin{exemple}
+				Un carré est une figure géométrique. Nous pouvons alors définir une \emph{classe mère} \lstinline|Figure| qui aura pour \emph{sous-classe} \lstinline|Carre|. Nous pourrons aussi ajouter d'autres sous-classes: \lstinline|Triangle|, \lstinline|Polygone|, etc.
+			\end{exemple}
+		
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.5\linewidth]{images/schemaheritage}
+				\caption{Représentation schématique de l'héritage}
+				\label{fig:schemaheritage}
+			\end{figure}
+			
+			\attention{Une classe ne peut hériter que d'une seule classe.}
+			
+			\textbf{Déclaration:} \lstinline|class nomClasse extends nomClasseMere { ... }|
+			
+			\begin{exemple}
+				Avec notre classe \lstinline|Triangle| et notre classe \lstinline|Figure|
+				\lstinputlisting{code/heritage.java}
+			\end{exemple}
+		
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=1.0\linewidth]{images/heritage}
+				\caption{Exemple héritage des classes}
+				\label{fig:heritage}
+			\end{figure}
+			
+			Il sera souvent utile d'accéder, depuis une classe, aux éléments de la classe mère. On utilisera pour cela le mot clé \lstinline|super|.
+			\begin{exemple}
+				On souhaite créer une classe mère \lstinline|Personne| ayant pour sous-classe \lstinline|Etudiant|. Afin d'éviter de déclarer plusieurs fois un attribut \lstinline|nom|, on va directement affecter une valeur à l'attribut de la classe mère, plutôt que de le redéfinir dans les sous-classes. 
+				\lstinputlisting{code/exemplesuper.java}
+			\end{exemple}
+							
+		\subsection{Surcharge}
+		
+			\subsubsection{Principe}
+			
+				\begin{definition}
+					\emph{Surcharger} une méthode consiste à la redéfinir dans une sous-classe.
+				\end{definition}
+			
+				\attention{Une classe peut accéder aux membres de sa classe mère seulement si ils ont comme visibilité minimale \lstinline|protected|.}
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=1.0\linewidth]{images/exemplesurcharge}
+					\caption{Exemple d'un programme avec surcharge de méthodes}
+					\label{fig:exemplesurcharge}
+				\end{figure}
+				
+			
+			\subsubsection{Surcharge de toString()}
+			
+				Toutes les classes héritant \emph{implicitement} de \lstinline|java.lang.Object|, la méthode \lstinline|toString()|, si elle est redéfinie, sera donc \emph{surchargée}.
+				
+				\begin{exemple}
+					Exemple d'une surcharge de la méthode \lstinline|toString()|:
+					\lstinputlisting{code/surcharge.java}
+				\end{exemple}
+			
+			\subsubsection{\lstinline|final|}
+			
+				Le mot clé \lstinline|final| signifie que le changement est interdit.
+				Il interdit notamment:
+				\begin{itemize}
+					\item la surcharge d'une méthode
+					\item la spécialisation d'une classe
+					\item la modification d'un attribut ou d'un argument d'une méthode
+				\end{itemize}
+			
+%	\section{Le polymorphisme}
+	
+%		\subsection{Classes abstraites et interfaces}
+		
+%		\subsection{Stockage des objets}
+		
+%		\subsection{Collections}
+		
+%		\subsection{Templates génériques}

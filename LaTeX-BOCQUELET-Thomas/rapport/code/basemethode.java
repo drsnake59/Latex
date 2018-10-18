@@ -1,0 +1,3 @@
+TypeRetour nomMethode(parametre1, parametre2...) {
+	... corps ...
+}

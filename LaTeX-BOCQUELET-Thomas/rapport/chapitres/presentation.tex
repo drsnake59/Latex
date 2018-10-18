@@ -1,0 +1,82 @@
+\chapter{Présentation du langage}
+		\section{Qu'est-ce que le \lang{} ?}
+			
+				Simula 67 a été conçu par une équipe scandinave et a été
+				publié en 1967.
+				
+				Au début des années 70, Alan Kay conçoit au PARC (Rank
+				Xerox) le langage SmallTalk, qui est encore aujourd'hui \emph{la} référence dans les langages orientés objet.
+				
+				A la fin des années 70 et au début des années 80, on assiste à la naissance de nombreuses extensions objet d'anciens langages : Object Pascal, Objective C, C++, CLOS, ADA...
+				
+				Au milieu des années 90, Sun publie Java. Ses qualités
+				intrinsèques et le fait qu'il soit particulièrement adapté à
+				Internet en font immédiatement un standard.
+				
+				Une énorme masse de documentation peut être trouvée sur
+				Internet.		
+				
+				Le \lang{} est:
+				\begin{itemize}
+					\item Un langage orienté objet (\emph{POO}\footnote{Programmation Orientée Objet})
+					\item Une architecture \emph{Virtual Machine}
+					\item Un ensemble d'API variées
+					\item Un ensemble d'outils: le \emph{JDK\footnote{Java Development Kit}}
+					\item Portable:
+						\begin{itemize}
+							\item La compilateur \lang{} génère du langage \emph{byte code}
+							\item La \emph{JVM}\footnote{Java Virtual Machine} est présente sur la majeure partie des systèmes d'exploitation Windows, Mac, Unix...
+							\item Il dispose d'une sémantique très précise
+							\item Il supporte un code écrit en \emph{Unicode}
+							\item Il est accompagné d'une librairie standard
+						\end{itemize}	
+					\item Robuste:
+						\begin{itemize}
+							\item Orienté à l'origine pour des applications embarquées
+							\item Gère la mémoire par \emph{garbage collector}
+							\item Dispose d'un mécanisme d'\emph{exceptions}
+							\item Convertissions sûres automatiques uniquement
+							\item Contrôle des \emph{cast} à l'exécution
+						\end{itemize}
+				\end{itemize}
+				
+				\attention{
+					\begin{itemize}
+						\item Le \lang{} n'est pas du JavaScript, car le \lang{} est un langage généraliste, contrairement au JavaScript qui est un langage orienté sur la programmation Web !
+						\item Le \lang{} n'est pas du C++ ! \lang{} est un langage objet purement objet, et de plus haut niveau.
+					\end{itemize}	
+				}	
+		
+		\section{Les outils}
+		
+			Pour programmer en \lang{} sur ordinateur, nous utiliserons l'un des environnements de développement (\emph{IDE}) suivant:
+				\begin{itemize}
+					\item SunJDK (compilateur, interpréteur...)
+					\item Eclipse (gratuit)
+					\item IntelliJ (version \og community\fg{} gratuite, mais version commerciale payante)
+					\item NetBeans
+				\end{itemize}
+			Liste des outils utilisés dans la programmation \lang{}:
+				\begin{description}
+					\item[javac:] compilateur de sources Java
+					\item[java:] interpréteur de byte code
+					\item[appletviewer:] interpréteur d'applet
+					\item[javadoc:] générateur de documentation (HTML, MIF)
+					\item[javah:] générateur de header pour l'appel de méthodes natives
+					\item[javap:] désassembleur de byte code
+					\item[jdb:] debugger
+					\item[javakey:] générateur de clés pour la signature de code
+				\end{description}
+			Liste des \emph{API} standards:
+				\begin{description}
+					\item[java.lang:] types de bases, etc.
+					\item[java.util:] HashTable, Vector, Stack, Date...
+					\item[java.io:] accès aux entrées/sorties par flux
+					\item[java.net:] socket, URL...
+					\item[java.sql:] accès homogène aux bases de données
+					\item[java.security:] signatures, cryptographie, authentification...
+				\end{description}
+		
+		\section{Références}
+		
+			\lang{} dispose d'un grand nombre de ressources sur internet. A l'heure actuelle, nous sommes à la 8\ieme{} version de \lang{}: \url{https://docs.oracle.com/javase/8/}

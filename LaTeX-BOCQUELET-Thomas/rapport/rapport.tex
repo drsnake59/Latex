@@ -1,0 +1,74 @@
+\documentclass[french]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper]{geometry}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{babel}
+\usepackage{listings}
+\usepackage{hyperref} %doit etre défini en dernier !
+
+%en-tetes
+\pagestyle{fancy}
+\fancyhead[L]{UO \LaTeX}
+
+\input{macros/macros}
+\input{theoremes}
+
+\DeclareSIUnit{\byte}{B}
+\DeclareSIUnit{\bit}{bit}
+
+\sisetup{locale=FR}
+
+\lstset{aboveskip=1ex, frame=single, framesep=2pt, language=Java, basicstyle=\ttfamily, breaklines, keywordstyle=\color{blue}, commentstyle=\color{gray}\itshape, stringstyle=\color{orange}}
+
+\title{UO \LaTeX{} - Programmer en \lang{}}
+\author{Thomas BOCQUELET}
+\date{
+	\today{}
+	\begin{center}
+		\includegraphics[width=0.3\linewidth]{images/logoulco}
+	\end{center}
+}
+
+\begin{document}
+	\maketitle
+	
+	\begin{abstract}
+		Ce document a été réalisé à partir du cours (datant de 2017) de M\up{r} Grégory \bsc{Bourgin}, enseignant-chercheur et Maître de conférence à l'Université du Littoral Côte d'Opale.
+		
+		\begin{description}
+			\item[Email:] bourguin@lisic.univ-littoral.fr
+			\item[Page internet:] \url{http://www-lisic.univ-littoral.fr/spip.php?article50\&membre=10}
+		\end{description}
+		
+	\end{abstract}
+	
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	
+	% chapitres du rapport
+	
+	\include{chapitres/presentation}
+
+	\include{chapitres/elementslangage}
+	
+	\include{chapitres/modeleobjet}
+	
+	% annexes
+	
+	\appendix
+	
+	\include{chapitres/annexes}
+
+	
+
+\end{document}

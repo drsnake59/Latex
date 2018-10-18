@@ -1,0 +1,15 @@
+\section{Suppléments \LaTeX}
+
+	\begin{frame}
+		\frametitle{Suppléments \LaTeX}
+		\framesubtitle{Graphique}
+		\begin{tikzpicture}
+			\begin{axis}[domain=0:360, no markers, xlabel=$x$, ylabel=$f(x)$]
+			\addplot {cos(x)};
+			\addplot {sin(x)};
+			\addplot {tan(x)};
+			\legend{$cos(x)$, $sin(x)$,$tan(x)$}
+			\end{axis}
+		\end{tikzpicture}
+		
+	\end{frame}

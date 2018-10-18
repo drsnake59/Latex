@@ -1,0 +1,28 @@
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|c|c|c|m{5cm}|}
+		\hline 
+			Type & Taille & Valeur minimale & Valeur maximale & Exemple \\
+		\hline
+			\lstinline|byte| & \SI{8}{\bit} &\num{-128} & \num{127} & \lstinline|byte b = 64;| \\
+		\hline 
+			\lstinline|char| & \SI{16}{\bit} & \num{0} &$ 2^{16}-1 $& \lstinline|char c = 'A'; char d = 64;| \\
+		\hline 
+			\lstinline|short| & \SI{16}{\bit} & $ -2^{15}$ & $ 2^{15}-1 $ &  \lstinline|short s = 65;| \\
+		\hline 
+			\lstinline|int| & \SI{32}{\bit} & $ -2^{31}$ & $ 2^{31}-1 $ & \lstinline|int i = 1;| \\
+		\hline
+			\lstinline|long| & \SI{64}{\bit} & $ -2^{63}$ & $ 2^{63}-1 $ & \lstinline|long i = 65L;| \\
+		\hline
+			\lstinline|float| & \SI{32}{\bit} & $ -2^{-149}$ & $ 2-2^{-23} \times 2^{127} $ & \lstinline|float f = 65f;| \\
+		\hline
+			\lstinline|double| & \SI{64}{\bit} & $ -2^{-1074}$ & $ 2-2^{-52} \times 2^{1023} $ & \lstinline|double d = 65.55;| \\
+		\hline
+			\lstinline|boolean| & \SI{1}{\bit} & & & \lstinline|boolean b = true;| \lstinline|boolean c = false;| \\
+		\hline
+			\lstinline|void| & & & & \\
+		\hline
+	\end{tabular} 
+	\caption{Tableau des types primitifs}
+	\label{tableautypesprimitifs}
+\end{table}

@@ -1,0 +1,14 @@
+\section{Les éléments du langage}
+
+	\subsection{Types primitifs}
+	
+		\input{tableaux/typesprimitifs}
+		
+	
+	\subsection{Variables}
+	
+	\subsection{Expressions}
+	
+	\subsection{Méthodes}
+	
+	\subsection{Structures de contrôle}

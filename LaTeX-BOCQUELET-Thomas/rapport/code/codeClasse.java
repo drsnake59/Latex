@@ -1,0 +1,9 @@
+visibilite class NomClasse {
+	visibilite type nomAttribut;
+	...
+	
+	visibilite type nomMethode(parametres) {
+		...
+	}
+	...
+}

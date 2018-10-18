@@ -1,0 +1,311 @@
+\chapter{Les éléments du langage}
+		\section{Les types primitifs}
+		
+			\input{tableaux/typesprimitifs}
+		
+		\section{Les variables}
+		
+			En \lang, les variables sont typées, et peuvent être déclarées dans n'importe quel bloc du code.
+			\begin{exemple}
+				On considère le code suivant:
+				\lstinputlisting{code/porteevariables.java}
+			\end{exemple}
+			\textbf{Résultat:} La variable \lstinline|x| sera utilisable dans les blocs 1, 2 et 3.
+			La variable \lstinline|y| ne sera utilisable que dans le bloc 2.
+			
+			Liste des opérateurs d'affectation:
+			\begin{itemize}
+				\item \lstinline|=|
+				\item \lstinline|+=|
+				\item \lstinline|-=|
+				\item \lstinline|*=|
+				\item \lstinline|/=|
+				\item \lstinline|%=|
+			\end{itemize}
+		
+		\section{Expressions}
+		
+			\begin{definition}[Expression ternaire]
+				Une \emph{expression ternaire} est une notation \og simplifiée\fg{} d'un test logique.
+			\end{definition}
+			\begin{exemple}
+				Test classique
+				\lstinputlisting{code/testClassique.java}
+			\end{exemple}
+			\begin{exemple}
+				Test sous forme d'opérateur ternaire
+				\lstinputlisting{code/operateurTernaire.java}
+			\end{exemple}
+		
+			\begin{definition}[Type casting]
+				Il est nécessaire de \emph{caster} des affectations lorsque celles-ci ne sont pas implicites, sinon des erreurs de compilation sont détectées.
+				\lstinputlisting{code/cast.java}
+			\end{definition}
+		
+		\begin{remarque}
+			Levé d'ambiguité entre \lstinline|float| et \lstinline|double|
+			\lstinputlisting{code/floatdouble.java}
+		\end{remarque}
+		
+		\section{Les méthodes}
+		
+			\begin{definition}
+				Une \emph{méthode} est une \emph{fonction} appartenant à une \emph{classe}.
+			\end{definition}
+			Une \emph{méthode} se définit comme suit:
+			\lstinputlisting{code/basemethode.java}
+			
+			\begin{remarque}
+				Le type de retour est un type primitif, une classe ou \lstinline|void|.
+			\end{remarque}
+			\begin{remarque}
+				La liste des paramètres peut être vide.
+			\end{remarque}
+			\begin{remarque}
+				Si le type de retour n'est pas un \lstinline|void|, la fonction doit se terminer par un \lstinline|return|.
+			\end{remarque}
+	
+			Passage de paramètres:
+				\begin{itemize}
+					\item Les paramètres de type simple (\lstinline|int|, \lstinline|float|) sont passés par valeur uniquement
+					\item Les paramètres de type \emph{objet} ou tableau sont passés par \emph{référence}
+				\end{itemize}
+		
+		\section{Les structures de contrôle}
+		
+			\subsection{Si (\lstinline{if})} \label{if}
+			
+				Le code à l'intérieur d'un \lstinline|if| s'exécute uniquement si la condition est vraie.
+				
+				\attention{Plusieurs notations sont possibles ! Soyez vigilants au nombre de lignes de code dans votre bloc d'instructions (si votre condition est vraie) pour bien choisir la notation.}
+			
+				Différentes notations:
+				\begin{itemize}
+					\item \lstinline|if(condition) {...} else {...}|
+					\item \lstinline|if(condition) instruction;|
+					\item \lstinline|if(condition) instruction; else instruction;|
+					\item \lstinline|if(condition) instruction; else {...}|
+					\item \lstinline|if(condition) {...} else instruction;|
+				\end{itemize}
+			
+				\begin{exemple}
+					Exemple d'un test simple, avec deux notations différentes:
+					\lstinputlisting{code/exempleIF.java}
+				\end{exemple}
+			
+			\subsection{Tant que (\lstinline|while|)}
+			
+				Le code à l'intérieur d'un \lstinline|while| s'exécute \emph{tant que} la condition est vraie.
+			
+				\begin{remarque}
+					Comme pour le \lstinline|if| (\voirparagraphe{if}), il existe plusieurs notations possibles.
+				\end{remarque}
+			
+				Différentes notations:
+				\begin{itemize}
+					\item \lstinline|while(condition) {...}|
+					\item \lstinline|while(condition) instruction;|
+				\end{itemize}
+			
+				\begin{exemple}
+					Exemple d'une boucle qui affiche les chiffres de \num{0} à \num{9}:
+					\lstinputlisting{code/exempleWHILEsansDO.java}
+				\end{exemple}
+			
+				\begin{remarque}
+					Le \lstinline|while|, tel que définit jusqu'à présent, vérifie la condition avant d'exécuter (au moins une fois) les instructions. Dans certains cas, il pourrait être utile d'exécuter les instructions une première fois, avant de vérifier si la condition est vraie: on utilisera \lstinline|do|.
+				\end{remarque}
+			
+				\begin{exemple}
+					Exemple d'une boucle qui affiche également les chiffres de \num{0} à \num{9}:
+					\lstinputlisting{code/exempleWHILEavecDO.java}
+				\end{exemple}
+				
+				\textbf{Explication du fonctionnement:}
+					\begin{enumerate}
+						\item A la 1\iere{} exécution, le code à l'intérieur du bloc \lstinline|do| sera exécuté: \lstinline|i| vaudra donc \num{1}
+						\item Puisque la condition du \lstinline|while| est vrai, le code sera exécuté jusqu'à ce que \lstinline|i| soit égal à 9 (lors de l'exécution, vous verrez les chiffres de 0 à 9)
+						\item \lstinline|i| valant ensuite \num{10}, le code du \lstinline|while| ne sera plus exécuté, car la condition est fausse
+					\end{enumerate}
+				
+				\begin{remarque}
+					Sans l'instruction \lstinline|do|, rien ne se serait affiché sur votre terminal, et le bloc d'instructions n'aurait pas été exécuté une seule fois !
+				\end{remarque}
+			
+			\subsection{Pour (\lstinline|for|)}
+			
+				Le code à l'intérieur d'une boucle \lstinline|for| s'exécute un nombre \emph{défini} de fois, contrairement au \lstinline|while| qui peut s'exécuter à l'infini (à proscrire bien sûr).
+				
+				Différentes notations:
+				\begin{itemize}
+					\item \lstinline|for(initialisation, condition, incrementation) {...}|
+					\item \lstinline|for(initialisation, condition, incrementation) instruction;|
+				\end{itemize}
+			
+				Avec:
+				\begin{description}
+					\item[initialisation:] Initialisation de la (ou des) variables de boucle
+					\item[condition:] La boucle sera répétée \emph{tant que} la condition sera vraie
+					\item[incrementation:] Incrémente la variable de boucle (permet de passer \og d'une étape à une autre\fg{})
+				\end{description}
+			
+				\begin{exemple}
+					Exemple d'une boucle \lstinline|for| affichant les chiffres de \num{0} à \num{9}:
+					\lstinputlisting{code/exempleFOR.java}
+				\end{exemple}
+			
+				\begin{remarque}
+					Le code suivant est également correct: (la condition de fin est écrite différemment)
+					\lstinputlisting{code/exempleFOR2.java}
+				\end{remarque}
+			
+			\subsection{Tests en série (\lstinline|switch|)}
+			
+				Un \lstinline|switch| est un bloc contenant une série de tests. On peut le comparer à une succession de \lstinline|if|.
+				
+				\begin{exemple}
+					Supposons un programme destiné à afficher le résultat d'un étudiant à son semestre avec les consignes suivantes:
+					\begin{itemize}
+						\item \baremenote{0}{10}{ajourné}
+						\item \baremenote{10}{12}{admis}
+						\item \baremenote{12}{14}{admis mention assez bien}
+						\item \baremenote{14}{16}{admis mention bien}
+						\item \baremenote{16}{20}{admis mention très bien}
+						\item On doit traiter les erreurs de saisie: un message d'erreur sera retourné si la note est inférieure à \num{0} et supérieure à \num{20}
+					\end{itemize}
+					\begin{center}
+							\textbf{Avec la structure en \lstinline|if|:}
+					\end{center}
+					\lstinputlisting{code/exempleSwitchif.java}
+										
+					\begin{center}
+						\textbf{Avec la structure \lstinline|switch|:}
+					\end{center}
+					\lstinputlisting{code/switch.java}
+				\end{exemple}
+			
+				\begin{remarque}
+					Afin de mieux gérer les erreurs, on pourrait ajouter une boucle \lstinline|while|, de manière à redemander la saisie si la valeur n'est pas celle attendue.
+				\end{remarque}
+			
+			\subsection{Éléments supplémentaires des structures de contrôle}
+			
+				\begin{description}
+					\item[break:] permet de stopper une boucle (par exemple infinie)
+					\item[continue:] permet de passer automatiquement à l'itération suivante sans exécuter les instructions suivantes de la boucle
+				\end{description}
+			
+		\section{Entrées / Sorties}
+		
+			Les entrées/sorties sont possibles grâce à 2 flux:
+			\begin{itemize}
+				\item \lstinline|System.in| pour les \emph{entrées} (au clavier)
+				\item \lstinline|System.out| pour les \emph{sorties} (affichage dans le terminal)
+			\end{itemize}
+		
+			Pour afficher des éléments dans le terminal, on peut utiliser les commandes \lstinline|print| et \lstinline|println|.
+			\lstinline|println| affiche dans un terminal avec un retour chariot, contrairement à \lstinline|print| qui ne se contente que d'afficher.
+			
+			\begin{exemple}
+				Exemple d'affichage:
+				\lstinputlisting{code/exempleAffichage.java}
+			\end{exemple}
+		
+			\begin{remarque}
+				Notez la présence d'un \og S\fg{} majuscule dans le type de la variable \lstinline|name|.
+				
+				\attention{En \lang{}, pour déclarer une chaîne de caractères, il faut utiliser le type \lstinline|String|, et non \lstinline|string| comme en C(++).}
+			\end{remarque}
+			
+			Certaines commandes permettent d'\emph{organiser les informations} ou afficher des \emph{caractères spéciaux} sur la console:
+			\begin{table}[h]
+				\centering
+				\begin{tabular}{|c|c|}
+					\hline 
+					Caractère & Affichage \\ 
+					\hline 
+					\lstinline|\n| & Retour chariot \\ 
+					\hline 
+					\lstinline|\t| & Tabulation \\ 
+					\hline 
+					\lstinline|\\| & \lstinline|\| \\ 
+					\hline 
+					\lstinline|\"| & \og  \\ 
+					\hline 
+				\end{tabular}
+			\caption{Caractères de contrôle d'affichage}
+			\label{tableaucaracteresaffichage} 
+			\end{table}	
+			
+		\section{Les commentaires}
+		
+			\begin{definition}
+				Les commentaires sont des éléments inscrits dans le code qui ne seront pas exécutés.
+				Ils permettent aussi de générer la documentation:
+					\begin{itemize}
+						\item avec des commentaires en HTML
+						\item avec des balises spécifiques à \lang{}: \lstinline|@...|
+					\end{itemize}
+			\end{definition}
+		
+			Les commentaires serviront à générer la documentation avec la commande \lstinline|javadoc|.
+			
+			\begin{exemple}
+				Commentaires dans un programme, qui composeront la documentation
+				\lstinputlisting{code/exemplecommentaire.java}
+			\end{exemple}
+			
+		\section{Les tableaux}
+		
+			Les tableaux sont la plus simple et la plus efficace solution pour stocker des éléments du même type.
+			
+			\attention{Un tableau est une entité de \emph{taille fixe}, et celle-ci ne peut pas changer.}
+				
+			\subsection{Tableaux à une dimension}
+			
+				\textbf{Déclaration}:
+				\begin{itemize}
+					\item \lstinline|type[] tab1, tab2;|
+					\item \lstinline|type tab3[];|
+				\end{itemize}
+			
+				\begin{exemple}
+					Exemple d'une déclaration d'un tableau de 7 entiers:
+					\lstinputlisting{code/tableauunedimension.java}
+				\end{exemple}
+			
+				Il est possible de créer \emph{dynamiquement} un tableau grâce à l'instruction \lstinline|new|. Ce type de création est utilisé lorsqu'on ne connait pas la taille du tableau au moment de l'écriture du programme, ou lorsqu'elle dépend du contenu d'une ou plusieurs variables.
+				
+				\lstinputlisting{code/tableauunedimension2.java}
+			
+			\subsection{Tableaux multidimensionnels}
+			
+				Les tableaux multidimensionnels sont des tableaux qui ont pour éléments des tableaux.
+				
+				\begin{exemple}
+					Exemple d'une déclaration d'un tableau multidimensionnel:
+					\lstinputlisting{code/tableaumultidimensionnel.java}
+				\end{exemple}
+			
+		\section{Programme principal}
+			
+			Comme en C, il est indispensable d'avoir un programme principal pour pouvoir exécuter les \emph{fonctions} ou \emph{méthodes} créées.
+			Cependant en \lang, tout est objet: c'est la raison pour laquelle on ne peut pas définir une \emph{méthode globale} \lstinline|main|.
+		
+			\subsection{Code minimal}
+			
+				\lstinputlisting{code/codeminimal.java}
+			
+			\subsection{Compilation}
+			
+				En \lang, il est nécessaire de \emph{compiler}\footnote{Traduire un programme en langage \og machine\fg{}} ses fichiers avant de pouvoir les exécuter.
+				
+				Supposons le code suivant: (dans un fichier \lstinline|Hero.java|)
+				\lstinputlisting{code/compilationexemple.java}
+				
+				\begin{description}
+					\item[compilation:] \lstinline|javac Hello.java|
+					\item[exécution:] \lstinline|java Hello|
+				\end{description}
+				
+				
