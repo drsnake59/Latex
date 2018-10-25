@@ -1,5 +1,4 @@
-\beamer@endinputifotherversion {3.36pt}
-\select@language {french}
+\babel@toc {french}{}
 \beamer@sectionintoc {1}{Pr\IeC {\'e}sentation}{3}{0}{1}
 \beamer@subsectionintoc {1}{1}{Qu'est-ce que le Java ?}{4}{0}{1}
 \beamer@subsectionintoc {1}{2}{Les outils}{19}{0}{1}
